@@ -3,8 +3,16 @@ var topSquare = document.getElementById("topSquare");
 var puntosj1 = 0;
 var puntosj2 = 0;
 var turn = true;
-if (window.event) {
-    console.log(window.event)
+window.onkeydown = (e) => {
+    if (e.key == "Enter" && document.getElementById("overmsg")) {
+        startTable();
+        document.getElementsByTagName("body")[0].removeChild(
+            document.getElementById("smokeScreen")
+        );
+        document.getElementsByTagName("body")[0].removeChild(
+            document.getElementById("overmsg")
+        );
+    }
 }
 startTable()
 function startTable(type) {
@@ -30,7 +38,7 @@ function startTable(type) {
             }
         };
         arrow.onmouseleave = (e) => {
-            e.target.style.backgroundColor = "whitesmoke"
+            e.target.style.backgroundColor = "transparent"
         }
         arrow.classList.add("falseCircle");
         arrow.setAttribute("column", i)
@@ -42,10 +50,28 @@ function startTable(type) {
         for (let j = 0; j < 7; j++) {
             let circle = document.createElement("div")
             circle.classList.add("circle");
-            circle.setAttribute("column", j)
-            file.appendChild(circle)
+            circle.setAttribute("column", j);
+            // let falseCircle = document.getElementsByClassName("falseCircle");
+            // circle.onmouseenter = (e) => {
+            //     for (let i = 0; i < falseCircle.length; i++) {
+            //         if (falseCircle[i].getAttribute("column") == e.target.getAttribute("column")) {
+            //             if (turn) {
+            //                 falseCircle[i].style.backgroundColor = "red";
+            //             }
+            //             else {
+            //                 falseCircle[i].style.backgroundColor = "yellow";
+            //             }
+            //         }
+            //     }
+            // }
+            // circle.onmouseleave = (e) => {
+            //     for (let i = 0; i < falseCircle.length; i++) {
+            //         falseCircle[i].style.backgroundColor = "transparent";
+            //     }
+            // }
+            file.appendChild(circle);
         }
-        square.appendChild(file)
+        square.appendChild(file);
     }
 }
 function drow(e) {
@@ -74,14 +100,10 @@ function drow(e) {
 
                 let overmsg = document.createElement("div");
                 overmsg.id = "overmsg";
-                overmsg.onkeypress = (e) => {
-                    tecla = (document.all) ? e.keyCode : e.which;
-                    if (tecla == 13) {
-                        alert('Has pulsado enter');
-                    }
-                }
                 let h2 = document.createElement("h2");
+                let h3 = document.createElement("h3");
                 let p = document.createElement("p");
+                p.innerHTML = "(press ENTER to continue)";
                 let div = document.createElement("div");
                 div.innerHTML = "NEXT GAME";
                 div.onclick = () => {
@@ -98,15 +120,16 @@ function drow(e) {
                     puntosj1++;
                     document.getElementById("numberRed").innerHTML = puntosj1;
                     h2.innerHTML = `<span style="color:red">J1</span> WINS`;
-                    p.innerHTML = `FIRST TURN TO <span style="color:#dada03">J2</span>`;
+                    h3.innerHTML = `FIRST TURN TO <span style="color:#dada03">J2</span>`;
                 }
                 else {
                     puntosj2++;
                     document.getElementById("numberYellow").innerHTML = puntosj2;
                     h2.innerHTML = `<span style="color:yellow">J2</span> WINS`;
-                    p.innerHTML = `FIRST TURN TO <span style="color:#e20101">J1</span>`;
+                    h3.innerHTML = `FIRST TURN TO <span style="color:#e20101">J1</span>`;
                 }
                 overmsg.appendChild(h2);
+                overmsg.appendChild(h3);
                 overmsg.appendChild(p);
                 overmsg.appendChild(div);
                 document.getElementsByTagName("body")[0].appendChild(overmsg);

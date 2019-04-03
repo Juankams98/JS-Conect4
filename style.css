@@ -5,7 +5,7 @@
     cursor: context-menu;
 }
 body{
-    background-color: whitesmoke;
+   background-color: whitesmoke;
 }
 
 #topSquare{
@@ -68,8 +68,9 @@ body{
     height: 230px;
     /* background-color: #87b4de; */
     background-color: #0084CE;
-    float: right;
-    position: relative;
+    position: absolute;
+    top: 0px;
+
     box-shadow: -18px 17px 19px -8px rgba(0,0,0,0.75);
 }
 
@@ -109,6 +110,7 @@ body{
 }
 #scoreBoard > #retartButton:hover {
     cursor: pointer;
+    background-color: #bd3b3b
 }
 
 .circle{
@@ -117,16 +119,16 @@ body{
     height: 100%;
     border-radius: 50px;
     display: inline-block;
-    margin-left: 3%;
+    margin-left: 3.7%;
     box-shadow: inset 13px 13px 15px -10px rgba(0,0,0,0.75);
 }
 .falseCircle{
-    background-color: whitesmoke;;
+    background-color: transparent;;
     width: 10%;
     height: 100%;
     border-radius: 50px;
     display: inline-block;
-    margin-left: 3%;
+    margin-left: 3.7%;
     /* box-shadow: inset 13px 13px 15px -10px rgba(0,0,0,0.75); */
 }
 .file{
@@ -155,12 +157,13 @@ body{
     font-size: 280%;
     margin-top: 1%;
 }
-#overmsg > p{
+#overmsg > h3{
     font-size: 220%;
     margin-top: 1%;
+    margin-bottom: 0%;
 }
-#overmsg > p > span{
-    font-size: 280%;
+#overmsg > h3 > span{
+    font-size: 150%;
 }
 #overmsg > div{
     width: 100%;
